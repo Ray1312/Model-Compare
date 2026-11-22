@@ -39,7 +39,7 @@ Each notebook recreates the same split using a seeded PyTorch generator.
 Model-Compare/
 ├── README.md
 ├── requirements.txt
-├── notebooks/
+├── models/
 │   ├── 01_Vanilla_AE.ipynb
 │   ├── 02_Sparse_AE.ipynb
 │   ├── 03_VAE.ipynb
