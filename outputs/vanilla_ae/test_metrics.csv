@@ -1,0 +1,2 @@
+model,test_mse,test_psnr,test_ssim,best_val_loss,mean_epoch_time_s,latent_dim,epochs,seed
+Vanilla AE,0.007077677963078891,22.564558029174805,0.8158380546064387,0.007132731944322586,7.523912749349995,64,20,42

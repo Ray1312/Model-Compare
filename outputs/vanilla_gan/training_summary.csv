@@ -1,0 +1,2 @@
+model,latent_dim,learning_rate,epochs,seed,final_generator_loss,final_discriminator_loss,mean_epoch_time_s
+Vanilla GAN,100,0.0002,20,42,1.5184374635350215,0.4496851491329332,8.036723281250001

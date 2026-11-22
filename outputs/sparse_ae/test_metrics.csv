@@ -1,0 +1,2 @@
+model,test_mse,test_psnr,test_ssim,sparsity_ratio,best_val_loss,mean_epoch_time_s,latent_dim,sparsity_lambda,epochs,seed
+Sparse AE,0.009741860915203484,21.05620574951172,0.7596587299172245,51.91607142857143,0.0098275187132614,7.745069061199989,64,0.0001,20,42

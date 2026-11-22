@@ -1,0 +1,2 @@
+model,test_loss,test_accuracy,test_accuracy_percent,best_val_accuracy,epochs,seed
+MLP Classifier,0.3299532902240753,0.8932857142857142,89.32857142857142,0.8982857142857142,20,42

@@ -1,0 +1,4 @@
+layer,weight_shape,gram_shape,relative_frobenius_error,wtw_equals_identity
+W1 (Input to Hidden 1),"(256, 784)","(784, 784)",15.770979881286621,False
+W2 (Hidden 1 to Latent),"(64, 256)","(256, 256)",3.761920213699341,False
+W3 (Latent to Output),"(10, 64)","(64, 64)",1.4556620121002197,False

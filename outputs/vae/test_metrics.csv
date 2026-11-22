@@ -1,0 +1,2 @@
+model,test_mse,test_psnr,test_ssim,test_kl,best_val_loss,mean_epoch_time_s,latent_dim,beta,epochs,seed
+VAE,0.017935914086878474,18.128990173339844,0.6315459582934995,8.03432559967041,24.915031239100866,7.626245627899988,64,1.0,20,42

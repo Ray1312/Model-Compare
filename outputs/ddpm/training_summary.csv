@@ -1,0 +1,2 @@
+model,epochs,timesteps,beta_start,beta_end,learning_rate,seed,best_val_loss,mean_epoch_time_s
+DDPM,20,1000,0.0001,0.02,0.0002,42,0.023435859052198273,23.888224112100005

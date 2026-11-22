@@ -1,0 +1,2 @@
+model,latent_dim,learning_rate,epochs,seed,final_generator_loss,final_discriminator_loss,mean_epoch_time_s
+DCGAN,100,0.0002,20,42,1.1908158747028543,0.5246631098936682,14.367373234900006
