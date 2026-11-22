@@ -21,6 +21,10 @@ Model-Compare/
 │   ├── DDPM.ipynb
 │   ├── MLP_Classifier.ipynb
 │   └── Comparison.ipynb
+├── src/
+│   ├── __init__.py
+│   ├── architectures.py
+│   └── data.py
 ├── checkpoints/
 │   ├── vanilla_ae.pt
 │   ├── sparse_ae.pt
@@ -44,7 +48,23 @@ Model-Compare/
     └── comparison/
 ```
 
-The notebooks contain the model definitions, training or evaluation code, and saved execution outputs. The `models/` directory is named as it is in the repository; it contains `.ipynb` files rather than importable Python modules.
+The `models/` directory contains the executed notebooks, including training and evaluation code. The separate `src/` package provides importable PyTorch model classes (`architectures.py`) and Fashion-MNIST dataset/split helpers (`data.py`). These modules match the model definitions and data split used in the notebooks. The notebooks remain self-contained and do not import from `src/`.
+
+## Reusable Python modules
+
+`src/architectures.py` holds the network definitions extracted from `models/Comparison.ipynb`. `src/data.py` provides `create_datasets` and `create_loaders` with the same seeded 56,000 / 7,000 / 7,000 split used for the experiments.
+
+To import the modules from the repository root:
+
+```python
+from src.architectures import VanillaAE
+from src.data import create_loaders
+
+model = VanillaAE(latent_dim=64)
+train_loader, val_loader, test_loader = create_loaders()
+```
+
+These modules are provided for reuse and checkpoint loading. The completed experimental results come from the notebooks and checkpoints already committed in this repository. Using the modules does not automatically reproduce training or evaluation.
 
 ## Experimental setup
 
@@ -72,13 +92,13 @@ Install the required packages:
 python -m pip install -r requirements.txt
 ```
 
-Each notebook has a storage setting in its second code cell:
+The notebooks use a storage setting near the beginning (Cell 2):
 
 ```python
 USE_GOOGLE_DRIVE = True
 ```
 
-When enabled, the notebooks read and write files under:
+When enabled, the notebooks read and write checkpoints and outputs under:
 
 ```text
 /content/drive/MyDrive/Model_Comparison/
@@ -92,7 +112,7 @@ Before running the comparison notebook against existing results, copy the reposi
 
 Open the individual notebooks in `models/` and run their cells in order. Each experiment trains and saves its own model weights and results. There is no required order among the six generative-model training notebooks, but the comparison requires their saved checkpoints. `MLP_Classifier.ipynb` supplies the additional classifier checkpoints and results.
 
-**Running the training notebooks again will retrain the models and may overwrite existing checkpoint files.** Preserve a backup of the completed run if you want to compare results.
+**Running the training notebooks again will retrain the models and may overwrite existing checkpoint files.** Preserve a backup of the completed run if you want to compare results. The committed MLP notebook also contains a checkpoint-loading cell from the prior-sampling correction; for a fresh training run, review that cell before executing the entire notebook.
 
 ### Evaluating saved checkpoints
 
@@ -158,4 +178,4 @@ Each model's output directory also contains experiment-specific CSV files and fi
 
 The experiments use fixed random seeds and consistent dataset splits. Results may still vary between runs because of hardware, CUDA, and library behavior.
 
-The committed checkpoints allow the trained models to be loaded without running training again. The included notebook outputs and CSV files document the completed run; they are not a substitute for running the code if independent reproduction is required.
+The committed checkpoints allow the trained models to be loaded without running training again. In particular, `mlp_latent_prior.pt` contains MLP latent statistics estimated from the 7,000-image test split as specified in the assignment. The included notebook outputs and CSV files document the completed run; they are not a substitute for running the code if independent reproduction is required.
